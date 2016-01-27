@@ -10,6 +10,7 @@
     function createEvent() {
         var parent = document.getElementById('wrapper');
         var button = document.createElement('button');
+        button.id = 'button-refresh';
         button.textContent = 'Refresh';
         parent.appendChild(button);
         button.addEventListener('click', buldingPage);
@@ -24,7 +25,7 @@
             page.appendChild(el);
             el.textContent = pageTree[key];
         }
-        var button = document.getElementsByTagName('button')[0];
+        var button = document.getElementById('button-refresh');
         button.removeEventListener("click", buldingPage);
     }
 })();
