@@ -14,34 +14,36 @@
     }, {
         'tag': 'section',
         'parentId': 'wrapper',
-        'id': 'sum',
+        'id': 'wrapper-sum',
         'class': 'row'
     }, {
         'tag': 'section',
         'parentId': 'wrapper',
-        'id': 'totalSum',
+        'id': 'wrapper-totalSum',
         'class': 'row'
     }];
     // array data for span tags
     var spanFieldset = [{
         'tag': 'span',
-        'parentId': 'sum',
+        'parentId': 'wrapper-sum',
         'text': 'Sum: ',
         'class': 'span-text'
     }, {
         'tag': 'span',
-        'parentId': 'sum',
+        'parentId': 'wrapper-sum',
         'text': '0',
+        'id': 'sum',
         'class': 'span-text'
     }, {
         'tag': 'span',
-        'parentId': 'totalSum',
+        'parentId': 'wrapper-totalSum',
         'text': 'Total sum: ',
         'class': 'span-text'
     }, {
         'tag': 'span',
-        'parentId': 'totalSum',
+        'parentId': 'wrapper-totalSum',
         'text': '0',
+        'id': 'total-sum',
         'class': 'span-text'
     }];
     // array data for input tag
@@ -53,6 +55,7 @@
     },{
         'tag': 'input',
         'parentId': 'wrapper-input',
+        'id': 'count',
         'type': 'text',
         'name': 'count',
         'class': 'input'
@@ -63,7 +66,7 @@
         createElem(inputFieldset);
         createElem(spanFieldset);
         // event for create checkboxes
-        var input = document.getElementsByTagName('input')[0];
+        var input = document.getElementById('count');
         input.onkeyup = function() {
             removeChildren('list');
             createCheckbox('list');
@@ -115,7 +118,7 @@
 
     function createCheckbox(parentId) {
         var parent = document.getElementById(parentId);
-        var input = document.getElementsByTagName('input')[0];
+        var input = document.getElementById('count');
         var num = parseInt(input.value);
         var i;
         for (i = 0; i < num; i++) {
@@ -127,13 +130,13 @@
     }
 
     function resetSum() {
-        var sumCheckbox = document.getElementsByTagName('span')[1];
+        var sumCheckbox = document.getElementById('sum');
         sumCheckbox.textContent = 0;
     }
 
     function sum() {
         var checkbox = document.getElementsByTagName('input');
-        var sumCheckbox = document.getElementsByTagName('span')[1];
+        var sumCheckbox = document.getElementById('sum');
         var count = 0;
         var i;
         for (i = 1; i < checkbox.length; i++) {
@@ -145,7 +148,7 @@
     }
 
     function totalSum(elem) {
-        var totalSumCheckbox = document.getElementsByTagName('span')[3];
+        var totalSumCheckbox = document.getElementById('total-sum');
         var count = totalSumCheckbox.textContent;
         if (elem) {
             totalSumCheckbox.textContent = parseInt(count) + 1;
